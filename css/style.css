@@ -25,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+#body-img { pointer-events: none; }
 
 header, footer {
   text-align: center;
