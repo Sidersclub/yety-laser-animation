@@ -1,5 +1,5 @@
 /* -------- CONFIG -------- */
-const views = ['front', 'side', 'back']; // ordre des fichiers PNG
+const views = ['front', 'side', 'back']; // ordre des fichiers SVG
 let currentViewIndex = 0;
 
 /* format : { zone, price, sessions } */
@@ -21,7 +21,7 @@ const formatPrice = p => Number(p).toFixed(2);
 /* -------- ROTATION -------- */
 function updateView() {
   const view = views[currentViewIndex];
-  bodyImg.src = `assets/${view}.png`;
+  bodyImg.src = `assets/${view}.svg`;
 
   /* Si certaines zones n’existent que sur certaines vues,
      on peut activer/désactiver ici :
