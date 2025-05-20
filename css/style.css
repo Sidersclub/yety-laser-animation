@@ -60,25 +60,27 @@ main {
   overflow: hidden;
 }
 
-#body-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+ #body-img {
+   position: absolute;
+   inset: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
++  pointer-events: none;   /* laisse les clics passer aux overlays */
++}
 
-/* ----- ZONES CLIQUABLES : totalement invisibles ----- */
-.zone{
-  position:absolute;
-  /* retire TOUT ce qui pourrait s’afficher */
-  background-color:transparent;
-  border:none;
-  outline:none;
-  appearance:none;     /* neutralise le style natif des <button> */
-  padding:0;
-  cursor:pointer;
-  transition:background .2s ease, box-shadow .2s ease;
-}
+ /* ----- ZONES CLIQUABLES : totalement invisibles ----- */
+ .zone{
+   position:absolute;
+   background-color:transparent;
+   border:none;
+   outline:none;
+   appearance:none;
+   padding:0;
+   cursor:pointer;
+   transition:background .2s ease, box-shadow .2s ease;
+ }
+
 
 /* survol / sélection : halo bleu MAIS seulement à ce moment-là */
 .zone:hover,
