@@ -19,22 +19,22 @@ const clearBtn = document.getElementById('clear-cart');
 const formatPrice = p => Number(p).toFixed(2);
 
 /* -------- ROTATION -------- */
-function updateView() {
-  const view = views[currentViewIndex];
-  bodyImg.src = `assets/${view}.svg`;
+function updateView(){
+  const view = views[currentViewIndex];                 // front | side | back
+  bodyImg.src = `assets/${view}.svg`;                   // <-- on utilise désormais des SVG
 
-  /* Si certaines zones n’existent que sur certaines vues,
-     on peut activer/désactiver ici :
-     ex data-view="back" => affiche seulement en vue back */
-  zones.forEach(z => {
-    const required = z.dataset.view;
-    if (!required || required === view) {
+  // afficher / masquer les zones suivant data-view
+  zones.forEach(z=>{
+    const req = z.dataset.view;                         // ex. "front", "back", "front,side"
+    if(!req || req.split(',').includes(view)){
       z.style.display = 'block';
-    } else {
+    }else{
       z.style.display = 'none';
+      z.classList.remove('selected');                   // supprime le highlight s’il restait
     }
   });
 }
+
 
 prevBtn.addEventListener('click', () => {
   currentViewIndex = (currentViewIndex - 1 + views.length) % views.length;
