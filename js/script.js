@@ -3,6 +3,18 @@ if (location.hash === '#debug'){
   document.body.classList.add('debug');
 }
 
+/* Petit helper pour lire les coordonnées du clic dans viewer-wrapper
+   → pratique pour relever les coins d’une zone */
+if (document.body.classList.contains('debug')){
+  const wrap = document.getElementById('viewer-wrapper');
+  wrap.addEventListener('click',(e)=>{
+    const r = wrap.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width  * 100).toFixed(1);
+    const y = ((e.clientY - r.top)  / r.height * 100).toFixed(1);
+    console.log(`top:${y}%; left:${x}%`);
+  });
+}
+
 /* -------- CONFIG -------- */
 const views = ['front', 'side', 'back']; // ordre des fichiers SVG
 let currentViewIndex = 0;
