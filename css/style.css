@@ -67,21 +67,31 @@ main {
   height: 100%;
   object-fit: contain;
 
-  /* -------- ZONES CLIQUABLES -------- */
+/* ----- ZONES CLIQUABLES : totalement invisibles ----- */
 .zone{
   position:absolute;
-  /* totalement invisible tant qu’on ne survole pas ou qu’on ne l’a pas ajoutée au panier */
-  background:transparent;
-  border:2px solid transparent;
+  /* retire TOUT ce qui pourrait s’afficher */
+  background-color:transparent;
+  border:none;
+  outline:none;
+  appearance:none;     /* neutralise le style natif des <button> */
+  padding:0;
   cursor:pointer;
-  transition:0.2s ease;
+  transition:background .2s ease, box-shadow .2s ease;
 }
 
+/* survol / sélection : halo bleu MAIS seulement à ce moment-là */
 .zone:hover,
 .zone.selected{
-  background:rgba(0,114,255,.25);  /* halo bleu discret */
-  border-color:var(--blue);
+  background:rgba(0,114,255,.25);
+  box-shadow:0 0 0 2px var(--blue) inset;
 }
+/* MODE DEBUG : applique un contour en pointillés à CHAQUE overlay */
+body.debug .zone{
+  background:rgba(255,0,255,.15);        /* magenta translucide */
+  box-shadow:0 0 0 1px magenta inset;
+}
+
 
 
 .rot-btn {
