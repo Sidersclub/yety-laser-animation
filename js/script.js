@@ -1,3 +1,8 @@
+/* Active le mode debug si l’URL contient #debug */
+if (location.hash === '#debug'){
+  document.body.classList.add('debug');
+}
+
 /* -------- CONFIG -------- */
 const views = ['front', 'side', 'back']; // ordre des fichiers SVG
 let currentViewIndex = 0;
